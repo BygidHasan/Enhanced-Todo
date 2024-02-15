@@ -1,30 +1,11 @@
 'use client'
 
 import Card from '@/app/components/card';
-import Btn from '@/app/components/modalButton';
-import { useEffect, useState } from 'react';
+import CreateTodo from '@/app/components/createTodo';
+import { useSelector } from "react-redux";
 
 export default function page() {
-  const [data, setData] = useState([]);
-
-  function handleDelete(taskToDelete) {
-    const updatedData = data.filter( task => task !== taskToDelete);
-    setData(updatedData);
-    localStorage.setItem('myData', JSON.stringify(updatedData));
-  }
-  
-
-  function handleCreate(taskToCreate) {
-    const updatedData = [...data, taskToCreate];
-    setData(updatedData);
-    localStorage.setItem('myData', JSON.stringify(updatedData));
-  }
-
-  useEffect(() => {
-    const strTasks = localStorage.getItem('myData');
-    const allTasks = JSON.parse(strTasks);
-    setData(allTasks);
-  }, [])
+  let allTasks = useSelector( state => state.allTasks.tasks );
 
   return (
     <main className="h-inherit m-5 w-full rounded-lg bg-white shadow-lg px-7 overflow-auto">
@@ -34,14 +15,12 @@ export default function page() {
       </div>
       
       <div className='mt-5 grid grid-cols-1 md:grid-cols-3 gap-4'>
-        { data &&
-          data.map((task, i) => (
-            <Card key={i} task={task} onDelete={handleDelete}/>
+        { allTasks &&
+          allTasks.map((task) => (
+            <Card key={task.id} task={task}/>
           ))
         }
-
-        <Btn onCreate={handleCreate}/>
-        
+        <CreateTodo />
       </div>
     </main>
   )
