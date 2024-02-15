@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import { useSelector } from 'react-redux';
-import Card from '@/app/components/Card';
+import Card from '@/app/components/card';
 
 export default function page() {
   const allTasks = useSelector(state => state.allTasks.tasks);

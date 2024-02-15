@@ -4,9 +4,9 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 
 import { deleteTask } from '@/store/crudSlice';
 import { useDispatch } from 'react-redux';
-import EditTodo from "./EditTodo";
+import EditTodo from "./editTodo";
 
-export default function Card({task}) {
+export default function card({task}) {
 
     const dispatch = useDispatch();
     const { id, task: singleTask, description, priority, status } = task;

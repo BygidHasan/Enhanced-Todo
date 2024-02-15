@@ -1,10 +1,10 @@
 'use client'
 
-import Card from '@/app/components/Card';
-import CreateTodo from '@/app/components/CreateTodo';
+import Card from '@/app/components/card';
+import CreateTodo from '@/app/components/createTodo';
 import { useSelector } from "react-redux";
 
-export default function Page() {
+export default function page() {
   let allTasks = useSelector( state => state.allTasks.tasks );
 
   return (
