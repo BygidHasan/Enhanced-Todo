@@ -7,15 +7,16 @@ import { useDispatch } from 'react-redux';
 import EditTodo from "./editTodo";
 
 export default function card({task}) {
+
     const dispatch = useDispatch();
     const { id, task: singleTask, description, priority, status } = task;
 
     let priColor='';
 
-    if(priority == 'low') {
+    if(priority == 'Low') {
         priColor = 'bg-orange-300'
-    } else if(priority == 'medium') {
-        priColor = 'bg-orange-500'
+    } else if(priority == 'Medium') {
+        priColor = 'bg-orange-600'
     } else {
         priColor = 'bg-red-500'
     }
@@ -34,8 +35,7 @@ export default function card({task}) {
                     <p className={` ${status == 'Complete' ? 'bg-teal-500' : 'bg-red-500'} text-white px-3 py-1 rounded-lg`}>{status}</p>
                 </div>
                 <div className="flex">
-                    <EditTodo data={task}/>
-                    
+                    <EditTodo id={id}/>
                     <button className="rounded-lg bg-red-700 text-white p-1" onClick={() => dispatch(deleteTask(id))}><MdOutlineDeleteOutline size='24' /></button>
                 </div>
             </div>

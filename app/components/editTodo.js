@@ -1,25 +1,23 @@
 'use client';
 
-import {useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux';
+import {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { editTask } from '@/store/crudSlice';
 import { PiXBold } from "react-icons/pi";
 import { MdOutlineEditNote } from "react-icons/md";
 
 
-export default function editTodo({data}) {
+export default function editTodo({id}) {
+    const allTasks = useSelector(state => state.allTasks.tasks);
+    const findData = (allTasks.find(task => task.id === id))
+
+    const [updateData, setUpdateData] = useState({...findData});
+    console.log(updateData);
     const dispatch = useDispatch();
     const [isClicked, setIsClicked] = useState(false);
-    const [updateData, setUpdateData] = useState({
-                                            id: data.id,
-                                            task: data.task,
-                                            description: data.description,
-                                            priority: data.priority,
-                                            status: data.status
-                                        })
+    
     function handleClick() {
         dispatch(editTask(updateData));
-        setUpdateData({id: '', task: '', description: '', priority: 'Low', status: 'Complete' })
         setIsClicked(false);
     }
 

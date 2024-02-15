@@ -17,19 +17,17 @@ export const crudSlice = createSlice({
 
         editTask: (state, action) => {
             const editedData = action.payload;
-            const updatedState = state.tasks.map(item => {
+            state.tasks = state.tasks.map(item => {
                 if(item.id === editedData.id) {
                     return {...item, ...editedData}
                 }
                 return item;
             })
-            localStorage.setItem('myData', JSON.stringify(updatedState));
-            console.log(state.tasks);
+            localStorage.setItem('myData', JSON.stringify(state.tasks));
         },
 
         deleteTask: (state, action) => {
-            const updatedData = state.tasks.filter((task) => task.id !== action.payload);
-            state.tasks = updatedData;
+            state.tasks = state.tasks.filter((task) => task.id !== action.payload);
             localStorage.setItem('myData', JSON.stringify(state.tasks));
         }
     }
