@@ -7,7 +7,7 @@ export default function navbar() {
         <nav className='w-16 lg:w-64 h-inherit shadow-lg bg-white my-5 ml-5 px-2 lg:px-0 rounded-lg flex flex-col justify-between text-teal-700'>
             <div className='text-center text-2xl mx-auto mt-3 w-full font-bold'>
                 <span className='lg:hidden'>ETD</span><span className='hidden lg:block'>EnToDo</span>
-                <hr className='border-2 rounded-lg border-amber-700 mx-5'/>
+                <hr className='w-full lg:w-5/6 lg:mx-auto border-2 rounded-lg border-amber-700'/>
             </div>
 
             <div className="flex flex-col mx-auto">

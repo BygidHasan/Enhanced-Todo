@@ -18,23 +18,24 @@ export default function card({task}) {
     } else if(priority == 'Medium') {
         priColor = 'bg-orange-600'
     } else {
-        priColor = 'bg-red-500'
+        priColor = 'bg-red-700'
     }
 
 
     return (
         <>
-        <div className={`border-4 ${status == 'Complete' ? 'border-teal-500' : 'border-red-500'} rounded-lg h-40 text-slate-900 flex flex-col justify-around shadow-xl`}>
-            <div className="mx-5">
-                <h1 className="w-full text-teal-700 text-xl font-bold">{singleTask}</h1>
-                <p className="w-full text-slate-900 overflow-auto scroll-auto">{description}</p>
+        <div className={`border-4 ${status == 'Complete' ? 'border-teal-600' : 'border-red-700'} rounded-lg h-auto shadow-xl relative text-wrap px-4 py-6 mb-2`}>
+            <div className="overflow-auto">
+            <p className="w-full text-teal-700 text-xl font-bold mb-2">{singleTask}</p>
+            <p className="w-full text-slate-500 text-sm font-semibold mb-4">{description}</p>
             </div>
-            <div className="flex justify-between mx-5 items-center">
-                <div className="flex">
-                    <p className={`${priColor} text-white px-3 py-1 rounded-lg mr-1`}>{priority}</p>
-                    <p className={` ${status == 'Complete' ? 'bg-teal-500' : 'bg-red-500'} text-white px-3 py-1 rounded-lg`}>{status}</p>
+
+            <div className="flex mt-5">
+                <div className="flex flex-col w-full md:w-auto md:flex-row text-center">
+                    <p className={`${priColor} text-white px-3 py-1 rounded-lg md:mr-2 mb-2 md:mb-0`}>{priority}</p>
+                    <p className={` ${status == 'Complete' ? 'bg-teal-600' : 'bg-red-700'} text-white px-3 py-1 rounded-lg`}>{status}</p>
                 </div>
-                <div className="flex">
+                <div className="flex absolute -top-4 right-1 z-auto">
                     <EditTodo id={id}/>
                     <button className="rounded-lg bg-red-700 text-white p-1" onClick={() => dispatch(deleteTask(id))}><MdOutlineDeleteOutline size='24' /></button>
                 </div>
