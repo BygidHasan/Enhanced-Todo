@@ -2,7 +2,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Card from '@/app/components/Card';
-export default function Page() {
+
+export default function page() {
   const allTasks = useSelector(state => state.allTasks.tasks);
 
   return (
