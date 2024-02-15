@@ -12,7 +12,6 @@ export default function editTodo({id}) {
     const findData = (allTasks.find(task => task.id === id))
 
     const [updateData, setUpdateData] = useState({...findData});
-    console.log(updateData);
     const dispatch = useDispatch();
     const [isClicked, setIsClicked] = useState(false);
     
