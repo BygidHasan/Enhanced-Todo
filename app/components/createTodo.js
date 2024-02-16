@@ -17,6 +17,8 @@ export default function page() {
         setIsClicked(false);
     }
 
+    const isButtonDisabled = data.task.trim() === '' || data.description.trim() === '';
+
     return (
         <>
         <div className={`${isClicked ? 'block' : 'hidden'} fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center z-50`}>
@@ -31,14 +33,12 @@ export default function page() {
                             className="w-full mb-2 rounded-lg pl-2 py-1 border border-amber-700 bg-transparent text-slate-900"
                             type="text"
                             value={data.task}
-                            required
                             onChange={(e) => setData((prevData) => ({...prevData, task: e.target.value}))} />
                         <textarea
                             placeholder="enter description here"
                             className="w-full rounded-lg pl-2 py-1 border border-amber-700 bg-transparent text-slate-900 resize-none"
                             type="text"
                             value={data.description}
-                            required
                             onChange={(e) => setData((prevData) => ({...prevData, description: e.target.value}))}></textarea>
                     </div>
                     
@@ -67,7 +67,12 @@ export default function page() {
                             </select>
                         </div>
                     </div>
-                    <button onClick={handleClick} className="text-center border-2 border-amber-700 text-bold py-1 rounded-lg mt-6 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white">Create Task</button>
+                    <button
+                        onClick={handleClick}
+                        disabled={isButtonDisabled}
+                        className={` ${isButtonDisabled ? 'hover:bg-red-600 hover:border-red-600 hover:text-white' : 'hover:border-teal-700 hover:bg-teal-700 hover:text-white'} text-center border-2 border-amber-700 text-bold py-1 rounded-lg mt-6 px-3 `}>
+                            Create Task
+                        </button>
                 </div>
             </div>
         </div>
