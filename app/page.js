@@ -3,8 +3,10 @@
 import Card from '@/app/components/card';
 import CreateTodo from '@/app/components/createTodo';
 import { useSelector } from "react-redux";
+import { initializeClient } from '@/store/crudSlice';
 
 export default function page() {
+  initializeClient();
   let allTasks = useSelector( state => state.allTasks.tasks );
 
   return (
