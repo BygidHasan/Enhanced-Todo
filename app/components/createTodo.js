@@ -31,12 +31,14 @@ export default function page() {
                             className="w-full mb-2 rounded-lg pl-2 py-1 border border-amber-700 bg-transparent text-slate-900"
                             type="text"
                             value={data.task}
+                            required
                             onChange={(e) => setData((prevData) => ({...prevData, task: e.target.value}))} />
                         <textarea
                             placeholder="enter description here"
                             className="w-full rounded-lg pl-2 py-1 border border-amber-700 bg-transparent text-slate-900 resize-none"
                             type="text"
                             value={data.description}
+                            required
                             onChange={(e) => setData((prevData) => ({...prevData, description: e.target.value}))}></textarea>
                     </div>
                     
